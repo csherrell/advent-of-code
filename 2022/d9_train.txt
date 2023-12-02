@@ -1,0 +1,174 @@
+# Set 1 RU
+R 1
+U 1
+R 1
+U 1
+R 1
+U 1
+R 1
+U 1
+
+L 1
+D 1
+L 1
+D 1
+L 1
+D 1
+L 1
+D 1
+L 1
+D 1
+L 1
+D 1
+R 1
+U 1
+R 1
+U 1
+# # Set 1 LU
+# L 1
+# U 1
+# L 1
+# U 1
+# L 1
+# U 1
+# L 1
+# U 1
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# # Set 1 RD
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# R 1
+# D 1
+# L 1
+# U 1
+# L 1
+# U 1
+# L 1
+# U 1
+# L 1
+# U 1
+# # Set 1 LD
+# L 1
+# D 1
+# L 1
+# D 1
+# L 1
+# D 1
+# L 1
+# D 1
+# R 1
+# U 1
+# R 1
+# U 1
+# R 1
+# U 1
+# R 1
+# U 1
+# R 1
+# U 1
+# R 1
+# U 1
+# 
+
+
+ 
+#D 1
+#D 1
+#D 1
+#D 1
+#D 1
+#D 1
+#D 1
+#D 1
+##R 1
+#U 1
+#L 1
+#L 1
+#D 1
+#D 1
+#R 1
+##L 1
+#L 1
+#L 1
+#L 1
+#L 1
+#L 1
+# 
+
+#   L 1
+#   L 1
+#   L 1
+#   U 1
+#   U 1
+#   U 1
+#   U 1
+#   D 1
+#   D 1
+#   D 1
+#   D 1
+#   R 3
+#   U 3
+#   R 3
+#   U 3
+#   R 3
+#   U 3
+#   R 3
+#   U 3
+#   R 3
+#   U 3
+#   R 3
+#   U 3
+#        # NOTE: X Move 1
+#        R 1
+#        L 1
+#        L 1
+#        R 1
+#        # NOTE: Y Move 1
+#        U 1
+#        D 1
+#        D 1
+#        U 1
+#        # NOTE: X Move 2
+#        R 2
+#        L 2
+#        L 2
+#        R 2
+#        # NOTE: Y Move 2
+#        U 2
+#        D 2
+#        D 2
+#        U 2
+#       
+#       
+#        # NOTE: Diagnal Up Right 1
+#        U 1
+#        R 1
+#        # NOTE: Diagnal Up Right 2
+#        U 1
+#        R 1
+#        ###
+#       R 1
+#       U 1
+#       R 1
+#       U 1
+#       R 1
+#       U 1

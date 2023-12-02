@@ -1,0 +1,35 @@
+$ ls
+dir a
+7 z
+
+$ cd a
+$ ls
+dir b
+5 y
+
+$ cd b
+$ ls
+3 x
+dir c
+
+$ cd /
+$ cd ..
+
+$ cd ..
+$ cd ..
+$ cd ..
+$ cd ..
+$ ls
+dir a
+7 z
+
+$ cd a
+$ ls
+dir b
+5 y
+
+$ cd b
+$ ls
+3 x
+dir c
+
