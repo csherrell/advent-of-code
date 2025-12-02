@@ -45,13 +45,10 @@ from enum import Enum
 # -----------------------------------------------------------------------------
 # GLOBALS
 # -----------------------------------------------------------------------------
-DIAL = 50
-LLIMIT = 0
-ULIMIT = 99
+DIAL_START = 50
 UNITS = 100
-SOLUTION = 0
+DIRECTION = {"L": -1, "R": 1}
 
-DIRECTION = {"L":-1, "R":1}
 # -----------------------------------------------------------------------------
 # CONSTANTS
 # -----------------------------------------------------------------------------
@@ -96,6 +93,7 @@ def read_file(input_file):
         data_file = file.readlines()
     return data_file
 
+
 def d1_td(data_file, cmdargs):
     """
     Process a list of lines from a file
@@ -110,6 +108,7 @@ def d1_td(data_file, cmdargs):
         print(f"{line}")
     return "All Done"
 
+
 def d1p1(data_file, cmdargs):
     """
     Process a list of lines from a file
@@ -118,21 +117,25 @@ def d1p1(data_file, cmdargs):
     :param cmdargs: dict - command line arguments
     :return: string - "All Done"
     """
-    global DIAL
-    global SOLUTION
+    DIAL = DIAL_START
+    SOLUTION = 0
     print(f"{cmdargs}")
     for line in list(data_file):
-        rotate,count = line[0],int(line[1:])
-        if rotate == 'L':
-            DIAL = (DIAL - count) % UNITS
-        if rotate == 'R':
-            DIAL = (DIAL + count) % UNITS
-        if DIAL == 0:
-            SOLUTION = SOLUTION + 1
+        SOLUTION = (
+            SOLUTION + 1
+            if (
+                DIAL := (
+                    DIAL + DIRECTION[(rotate := line[0])] * (count := (int(line[1:])))
+                )
+                % UNITS
+            )
+            == 0
+            else SOLUTION
+        )
         print(f"{rotate}, {count}, {DIAL}, {SOLUTION}")
 
     print(f"The solution is: {SOLUTION}")
-    
+
     return "All Done"
 
 
