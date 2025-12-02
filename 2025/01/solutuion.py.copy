@@ -45,12 +45,13 @@ from enum import Enum
 # -----------------------------------------------------------------------------
 # GLOBALS
 # -----------------------------------------------------------------------------
-DIAL_START = 50
+DIAL = 50
+LLIMIT = 0
+ULIMIT = 99
 UNITS = 100
-#DIAL_START = 2
-#UNITS = 4
-DIRECTION = {"L": -1, "R": 1}
+SOLUTION = 0
 
+DIRECTION = {"L":-1, "R":1}
 # -----------------------------------------------------------------------------
 # CONSTANTS
 # -----------------------------------------------------------------------------
@@ -95,7 +96,6 @@ def read_file(input_file):
         data_file = file.readlines()
     return data_file
 
-
 def d1_td(data_file, cmdargs):
     """
     Process a list of lines from a file
@@ -110,7 +110,6 @@ def d1_td(data_file, cmdargs):
         print(f"{line}")
     return "All Done"
 
-
 def d1p1(data_file, cmdargs):
     """
     Process a list of lines from a file
@@ -119,64 +118,20 @@ def d1p1(data_file, cmdargs):
     :param cmdargs: dict - command line arguments
     :return: string - "All Done"
     """
-    DIAL = DIAL_START
-    SOLUTION = 0
+    global DIAL
+    global SOLUTION
     print(f"{cmdargs}")
-    for line in list(data_file):
-        SOLUTION = (
-            SOLUTION + 1
-            if (
-                DIAL := (
-                    DIAL + DIRECTION[(rotate := line[0])] * (count := (int(line[1:])))
-                )
-                % UNITS
-            )
-            == 0
-            else SOLUTION
-        )
-        print(f"{rotate}, {count}, {DIAL}, {SOLUTION}")
-
-    print(f"The solution is: {SOLUTION}")
-
-    return "All Done"
-
-def d1p2(data_file, cmdargs):
-    """
-    Process a list of lines from a file
-    Loop over the lines and strip the white space from beginning and end of string
-    :param data_file: list - List of lines from the input file
-    :param cmdargs: dict - command line arguments
-    :return: string - "All Done"
-    """
-    DIAL = DIAL_START
-    DIAL_S = DIAL_START
-    solution = 0
-    ticks = 0
-    print(f"{cmdargs}")
-    print(f"D:{DIAL}")
     for line in list(data_file):
         rotate,count = line[0],int(line[1:])
         if rotate == 'L':
-            offset = DIAL - count
             DIAL = (DIAL - count) % UNITS
-            if offset == 0:
-                solution += 1
-            elif offset  < 0:
-                solution += abs((DIAL - count) // UNITS)
         if rotate == 'R':
-            offset = DIAL + count
             DIAL = (DIAL + count) % UNITS
-            if offset == UNITS:
-                solution += 1
-            elif offset  > UNITS:
-                solution += abs((DIAL + count) // UNITS)
+        if DIAL == 0:
+            SOLUTION = SOLUTION + 1
+        print(f"{rotate}, {count}, {DIAL}, {SOLUTION}")
 
-#            if offset >= UNITS:
-#                solution += offset // UNITS
-#            offset = (DIAL + count)
-        print(f"{rotate} {count}, {offset}, {solution}, D:{DIAL}")
-
-    print(f"The solution is: {solution}")
+    print(f"The solution is: {SOLUTION}")
     
     return "All Done"
 
@@ -194,7 +149,7 @@ def main():
     # description of the operations to be performed
     arguments = docopt_handler()
     data_file = read_file(arguments["<input_file>"])
-    print(f"{d1p2(data_file,arguments)}")
+    print(f"{d1p1(data_file,arguments)}")
 
 
 if __name__ == "__main__":
