@@ -158,18 +158,20 @@ def d1p2(data_file, cmdargs):
         rotate,count = line[0],int(line[1:])
         if rotate == 'L':
             offset = DIAL - count
-            DIAL = (DIAL - count) % UNITS
             if offset == 0:
                 solution += 1
-            elif offset  < 0:
-                solution += abs((DIAL - count) // UNITS)
+            elif offset < 0:
+                solution = solution + 1 if DIAL > 0 else solution
+                solution += (abs(DIAL - count) // UNITS)
+            DIAL = (DIAL - count) % UNITS
         if rotate == 'R':
             offset = DIAL + count
-            DIAL = (DIAL + count) % UNITS
             if offset == UNITS:
                 solution += 1
-            elif offset  > UNITS:
-                solution += abs((DIAL + count) // UNITS)
+            elif offset > UNITS:
+                solution = solution + 1 if DIAL > UNITS else solution
+                solution += (abs(DIAL + count) // UNITS)
+            DIAL = (DIAL + count) % UNITS
 
 #            if offset >= UNITS:
 #                solution += offset // UNITS
