@@ -149,11 +149,7 @@ def d1p2(data_file, cmdargs):
     :return: string - "All Done"
     """
     DIAL = DIAL_START
-    DIAL_S = DIAL_START
     solution = 0
-    ticks = 0
-    print(f"{cmdargs}")
-    print(f"D:{DIAL}")
     for line in list(data_file):
         rotate,count = line[0],int(line[1:])
         if rotate == 'L':
@@ -172,10 +168,6 @@ def d1p2(data_file, cmdargs):
                 solution = solution + 1 if DIAL > UNITS else solution
                 solution += (abs(DIAL + count) // UNITS)
             DIAL = (DIAL + count) % UNITS
-
-#            if offset >= UNITS:
-#                solution += offset // UNITS
-#            offset = (DIAL + count)
         print(f"{rotate} {count}, {offset}, {solution}, D:{DIAL}")
 
     print(f"The solution is: {solution}")
